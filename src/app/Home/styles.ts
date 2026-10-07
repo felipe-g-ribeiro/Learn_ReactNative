@@ -6,10 +6,10 @@ export const styles = StyleSheet.create({
     justifyContent: "center", 
     alignItems: "center"
   }, 
-  text: {
-    fontSize: 32,
-    fontWeight: 700,
-    color: "red"
+  logo:{
+    height: 34,
+    width: 134,
   }
   
+
 })
