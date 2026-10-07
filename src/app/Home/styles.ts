@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#d0d2d8",
     paddingTop: 62,
-    padding: 60,
+    padding: 24,
+    gap: 24,
   }, 
   logo:{
     height: 34,

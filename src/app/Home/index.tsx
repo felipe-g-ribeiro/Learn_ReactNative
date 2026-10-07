@@ -11,7 +11,8 @@ export function Home(){
      <Image source={require("@/assets/logo.png")} style ={styles.logo} />
      
  
-       <Button />
+       <Button title ="Entrar"/>
+
        
    
      
