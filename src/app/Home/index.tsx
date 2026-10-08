@@ -1,4 +1,4 @@
-import { View, Image, TouchableOpacity, Text } from "react-native"
+import { View, Image, TouchableOpacity, Text, ScrollView } from "react-native"
 
 import { styles } from "./styles"
 import { FilterStatus} from "@/types/FilterStatus"
@@ -33,13 +33,19 @@ export function Home(){
             <Text style ={styles.clearText}>Limpar</Text>
           </TouchableOpacity>
           </View> 
+          
+          <ScrollView>
+          {
+            Array.from({length: 100}).map((_, index)=> (          
 
-          <Item 
+          <Item
+          key={index} 
           data={{status: FilterStatus.DONE, description: "Café"}}
           onStatus={() => console.log("mudar status")}
           onRemove={() => console.log("remover")}
-          />     
-          
+          />
+          ))}     
+          </ScrollView>
                
         
         
