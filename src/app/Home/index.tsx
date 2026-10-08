@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 
 import { styles } from "./styles"
 import { FilterStatus} from "@/types/FilterStatus"
+import { ItemStorage, itemsStorage  } from "@/storage/itemsStorage"
 
 import{ Button } from "@/components/Button"
 import { Input } from "@/components/Input"
@@ -19,7 +20,7 @@ export function Home(){
  
   const [filter, setFilter] = useState(FilterStatus.PENDING)
   const [description, setDescription] = useState("") 
-  const [items, setItems] = useState<any>([])
+  const [items, setItems] = useState<ItemStorage[]>([])
 
   function handleAdd(){
     if(!description.trim()){
@@ -39,10 +40,18 @@ export function Home(){
     setFilter(value)
   }
 
-
+  async function getItems() {
+    try{
+      const response = await itemsStorage.get()
+      setItems(response)
+    }catch(error){
+      console.log(error)
+      Alert.alert("Erro, Não foi possivel filtrar os itens.")
+    }
+  }
   
   useEffect(() => {
-    
+    getItems()    
   }, [])
   
   
