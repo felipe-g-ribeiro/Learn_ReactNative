@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     paddingTop: 62,
     
   }, 
+
   logo:{
     height: 34,
     width: 134,
@@ -42,13 +43,35 @@ export const styles = StyleSheet.create({
 
   },
 
-  clearButton: {
+  clearButton:{
+    marginLeft: "auto"
+  },
+
+
+  clearText: {
     marginLeft: "auto",
     fontSize: 12,
     color: "#828282",
     fontWeight: 600,
   },
-  clearText: {},
+  
+  separator: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "EEF0F5",
+    marginVertical: 16,
+  },
+
+  listContent:{
+    paddingTop: 24,
+    paddingBottom: 62,
+  },
+
+  empty:{
+    fontSize: 14,
+    color: "#808080",
+    textAlign: "center"
+  }
 
   
   
