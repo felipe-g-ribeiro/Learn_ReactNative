@@ -4,48 +4,55 @@ import { FilterStatus } from "@/types/FilterStatus"
 const ITEMS_STORAGE_KEY = "@comprar:items"
 
 export type ItemStorage = {
- id: string
- status: FilterStatus
- description: string
+    id: string
+    status: FilterStatus
+    description: string
 }
 
-async function get() : Promise<ItemStorage[]>{
-    try{
-const storage = await AsyncStorage.getItem(ITEMS_STORAGE_KEY)
+async function get(): Promise<ItemStorage[]> {
+    try {
+        const storage = await AsyncStorage.getItem(ITEMS_STORAGE_KEY)
 
-return storage ? JSON.parse(storage) : []
+        return storage ? JSON.parse(storage) : []
 
-    } catch(error){
+    } catch (error) {
         throw new Error("ITEMS_GET + error")
     }
 
-} 
+}
 
-async function getByStatus(status:FilterStatus): Promise<ItemStorage[]> {
+async function getByStatus(status: FilterStatus): Promise<ItemStorage[]> {
 
     const items = await get()
     return items.filter((items) => items.status === status)
-    
+
 }
 async function save(items: ItemStorage[]): Promise<void> {
-    try{
-        await AsyncStorage.setItem(ITEMS_STORAGE_KEY,JSON.stringify(items))
-    }catch(error){
+    try {
+        await AsyncStorage.setItem(ITEMS_STORAGE_KEY, JSON.stringify(items))
+    } catch (error) {
         throw new Error("ITEMS_SAVE:" + error)
     }
-    
+
 }
 
-async function add(newItem:ItemStorage): Promise<ItemStorage[]> {
+async function add(newItem: ItemStorage): Promise<ItemStorage[]> {
     const items = await get()
     const updatedItems = [...items, newItem]
-    await save (updatedItems)
+    await save(updatedItems)
 
-    return(updatedItems)
-    
+    return (updatedItems)
+
+}
+async function remove(id: string): Promise<void> {
+    const items = await get()
+    const updatedItems = items.filter((item) => item.id !== id)
+    await save(updatedItems)
+
 }
 export const itemsStorage = {
     get,
     getByStatus,
     add,
+    remove,
 }
