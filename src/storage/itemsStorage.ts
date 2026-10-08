@@ -21,7 +21,7 @@ return storage ? JSON.parse(storage) : []
 
 } 
 
-async function getByStatus(status:FilterStatus): Promise<ItemStorage> {
+async function getByStatus(status:FilterStatus): Promise<ItemStorage[]> {
 
     const items = await get()
     return items.filter((items) => items.status === status)

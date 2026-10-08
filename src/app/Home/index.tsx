@@ -1,5 +1,5 @@
 import { View, Image, TouchableOpacity, Text, FlatList, Alert} from "react-native"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { styles } from "./styles"
 import { FilterStatus} from "@/types/FilterStatus"
@@ -29,18 +29,24 @@ export function Home(){
   const newItem = {
     id: Math.random().toString(36).substring(2),
     description,
-    status: FilterStatus.DONE 
+    status: FilterStatus.PENDING    
   }
 
   setItems((prevState) =>[...prevState,newItem])
-}
-    
-
-  
+} 
 
   function update(value: FilterStatus){
     setFilter(value)
   }
+
+
+  
+  useEffect(() => {
+    
+  }, [])
+  
+  
+  
   return(
     <View style = {styles.container}>
      
