@@ -36,6 +36,11 @@ export function Home() {
     await itemsStorage.add(newItem)
     await itemsByStatus()
 
+    Alert.alert("Adicionado", `Adicionado ${description}`)
+    setDescription("")
+    setFilter(FilterStatus.PENDING)
+
+
     //setItems((prevState) =>[...prevState,newItem])
   }
 
@@ -68,6 +73,7 @@ export function Home() {
         <Input
           placeholder="O que você precisa Comprar"
           onChangeText={setDescription}
+          value={description}
         />
 
         <Button title="Adicionar" onPress={handleAdd} />
